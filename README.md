@@ -69,7 +69,16 @@ docker-compose up -d --build
 
 **Готово!** Приложение доступно по адресу: http://localhost
 
-**Тестовые аккаунты (создаются автоматически):**
+### Автоматическая инициализация Docker
+
+При первом запуске Docker автоматически:
+1. Создаёт таблицы в базе данных
+2. Создаёт администратора: `admin@example.com` / `admin123`
+3. Создаёт тестового пользователя: `test@test.com` / `test123`
+
+Это происходит благодаря скрипту `backend/entrypoint.sh`, который запускается при старте контейнера.
+
+**Тестовые аккаунты:**
 | Роль | Email | Пароль |
 |------|-------|--------|
 | Администратор | admin@example.com | admin123 |
@@ -157,8 +166,6 @@ SECRET_KEY=your-super-secret-key-change-in-production
 # API ключи (минимум один)
 OPENROUTER_API_KEY=your-openrouter-api-key
 OPENAI_API_KEY=your-openai-api-key
-
-Тестовый ключ от Openrouter = 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 (Будет действовать месяц)
 
 # Настройки LLM
 LLM_PROVIDER=openrouter
@@ -374,7 +381,16 @@ docker-compose up -d --build
 
 **Done!** Application available at: http://localhost
 
-**Test accounts (created automatically):**
+### Automatic Docker Initialization
+
+On first run, Docker automatically:
+1. Creates database tables
+2. Creates admin user: `admin@example.com` / `admin123`
+3. Creates test user: `test@test.com` / `test123`
+
+This is handled by `backend/entrypoint.sh` script that runs on container startup.
+
+**Test accounts:**
 | Role | Email | Password |
 |------|-------|----------|
 | Administrator | admin@example.com | admin123 |
