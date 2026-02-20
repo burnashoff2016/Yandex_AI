@@ -1,0 +1,13 @@
+from alembic import command
+from alembic.config import Config
+from app.core.database import engine, Base
+from app.models.models import User, Generation, BrandVoice
+import asyncio
+
+async def init_db():
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
+
+if __name__ == "__main__":
+    asyncio.run(init_db())
+    print("Database tables created successfully!")
